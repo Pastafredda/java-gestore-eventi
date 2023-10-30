@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +18,25 @@ public class Main {
                 BigDecimal.valueOf(50.00)
         );
         System.out.println(concerto);
+
+        //testo la classe programmEventi
+        ProgrammEventi programmEventi = new ProgrammEventi("Programma di Concerti");
+
+        Evento evento1 = new Evento("Concerto Rock", LocalDate.of(2023, 12, 12), 200);
+        Evento evento2 = new Evento("Concerto Jazz", LocalDate.of(2023, 12, 13), 150);
+        Evento evento3 = new Evento("Concerto Classico", LocalDate.of(2023, 12, 12), 300);
+
+        programmEventi.addEvento(evento1);
+        programmEventi.addEvento(evento2);
+        programmEventi.addEvento(evento3);
+
+        LocalDate dataSpecificata = LocalDate.of(2023, 12, 12);
+        List<Evento> eventiCorrispondenti = programmEventi.eventiData(dataSpecificata);
+
+        System.out.println("Eventi in data " + dataSpecificata + ":");
+        for(Evento evento : eventiCorrispondenti) {
+            System.out.println(evento.getTitolo());
+        }
 
 
         Scanner scanner = new Scanner(System.in);
@@ -62,7 +82,6 @@ public class Main {
                     System.out.println("Errore: " + e.getMessage());
                 }
             }
-
 
         }catch (IllegalArgumentException e) {
             System.out.println("Errore: " + e.getMessage());

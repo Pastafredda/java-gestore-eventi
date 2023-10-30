@@ -3,7 +3,7 @@ package org.lessons.java;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class Evento {
+public class Evento  {
     private String titolo;
     private LocalDate data;
 
