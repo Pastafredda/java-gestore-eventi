@@ -1,10 +1,24 @@
 package org.lessons.java;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        //testo la classe concerto
+        Concerto concerto = new Concerto(
+                "Concerto",
+                LocalDate.of(2023, 12, 12),
+                2000,
+                LocalTime.of(20, 0),
+                BigDecimal.valueOf(50.00)
+        );
+        System.out.println(concerto);
+
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Inserisci un nuovo evento");
         try {
@@ -23,12 +37,12 @@ public class Main {
                 exit = scanner.nextLine().equals("no");
                 if (!exit){
                     try{
-                        System.out.println("Quanti posti vuoi prenotare");
+                        System.out.println("Quanti posti vuoi prenotare?");
                         int postiPrenotati = Integer.parseInt(scanner.nextLine());
                         evento.prenota(postiPrenotati);
                         System.out.println("Hai prenotato " + postiPrenotati + " " + "posti");
                         int postiRimasti = evento.getPostiTotale() - evento.getPostiPrenotati();
-                        System.out.println("Sono rimasti "  + postiRimasti + " " + "posti");
+                        System.out.println("Sono rimasti "  + postiRimasti + " " +  "posti");
                     }catch (IllegalArgumentException e) {
                         System.out.println("Errore: " + e.getMessage());
                     }
@@ -41,7 +55,7 @@ public class Main {
                     System.out.println("Quanti posti vuoi disdire");
                     int postiDisdetti = Integer.parseInt(scanner.nextLine());
                     evento.disdici(postiDisdetti);
-                    System.out.println("Hai disdetto " + postiDisdetti);
+                    System.out.println("Hai disdetto " + postiDisdetti + " " + "posti");
                     int postiRimasti = evento.getPostiTotale() - evento.getPostiPrenotati();
                     System.out.println("Sono rimasti "  + postiRimasti + " " + "posti");
                 }catch (IllegalArgumentException e) {
