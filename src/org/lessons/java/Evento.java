@@ -13,7 +13,7 @@ public class Evento {
 
     public Evento(String titolo, LocalDate data, int postiTotale) {
         if (data.isBefore(LocalDate.now())){
-            throw new  IllegalArgumentException("Data non valida");
+            throw new  IllegalArgumentException("Inserisci una data valida");
         }
         if (postiTotale <=0){
             throw new IllegalArgumentException("Non ci sono abbastanza posti totali");
@@ -38,7 +38,7 @@ public class Evento {
 
     public void setData(LocalDate data) {
         if (data.isBefore(LocalDate.now())){
-            throw new  IllegalArgumentException("Data non valida");
+            throw new  IllegalArgumentException("Inserisci una data valida");
         }
         this.data = data;
     }
@@ -68,7 +68,7 @@ public class Evento {
         }else if (data.isBefore(LocalDate.now())){
             throw new IllegalArgumentException("Ci dispiace quest'evento è passato");
         } else if (postiPrenotati - value < 0){
-            throw new IllegalArgumentException("Non ci sono state prenotazioni, impossibile disdire");
+            throw new IllegalArgumentException("Non ci sono state abbastanza prenotazioni, impossibile disdire");
         } else {
             postiPrenotati -= value;
         }
